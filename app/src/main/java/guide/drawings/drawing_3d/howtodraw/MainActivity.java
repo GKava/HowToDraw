@@ -3,12 +3,15 @@ package guide.drawings.drawing_3d.howtodraw;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.codemybrainsout.ratingdialog.RatingDialog;
@@ -36,55 +39,65 @@ public class MainActivity extends AppCompatActivity  {
             getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new MainFragmentMenu()).commit();
         }
 
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                rating ();
+//            }
+//        }, 3000);
 
-        final RatingDialog ratingDialog = new RatingDialog.Builder(this)
-                .icon(ContextCompat.getDrawable(this, R.mipmap.ic_launcher))
-                .session(3)
-                .threshold(5)
-                .title("How was your experience with us?")
-                .titleTextColor(R.color.black)
-                .positiveButtonText("Not Now")
-                .negativeButtonText("Never")
-                .positiveButtonTextColor(R.color.white)
-                .negativeButtonTextColor(R.color.grey_500)
-                .formTitle("Submit Feedback")
-                .formHint("Tell us where we can improve")
-                .formSubmitText("Submit")
-                .formCancelText("Cancel")
-                .ratingBarColor(R.color.accent)
-                .playstoreUrl("https://play.google.com/store/apps/details?id=battleroyale.challenges.com.secretstars")
-                .onThresholdCleared(new RatingDialog.Builder.RatingThresholdClearedListener() {
-                    @Override
-                    public void onThresholdCleared(RatingDialog ratingDialog, float rating, boolean thresholdCleared) {
-                        //do something
-                        ratingDialog.dismiss();
-                    }
-                })
-                .onThresholdFailed(new RatingDialog.Builder.RatingThresholdFailedListener() {
-                    @Override
-                    public void onThresholdFailed(RatingDialog ratingDialog, float rating, boolean thresholdCleared) {
-                        //do something
-                        ratingDialog.dismiss();
-                    }
-                })
-                .onRatingChanged(new RatingDialog.Builder.RatingDialogListener() {
-                    @Override
-                    public void onRatingSelected(float rating, boolean thresholdCleared) {
-                        Uri address = Uri.parse("https://play.google.com/store/apps/details?id=battleroyale.challenges.com.secretstars");
-                        Intent openlinkIntent = new Intent(Intent.ACTION_VIEW, address);
-                        startActivity(openlinkIntent);
-                    }
-                })
-                .onRatingBarFormSumbit(new RatingDialog.Builder.RatingDialogFormListener() {
-                    @Override
-                    public void onFormSubmitted(String feedback) {
-
-                    }
-                }).build();
-
-        ratingDialog.show();
     }
 
+
+public void rating (){
+
+    final RatingDialog ratingDialog = new RatingDialog.Builder(this)
+            .icon(ContextCompat.getDrawable(this, R.mipmap.ic_launcher))
+            .session(1)
+            .threshold(5)
+            .title("How was your experience with us?")
+            .titleTextColor(R.color.black)
+            .positiveButtonText("Not Now")
+            .negativeButtonText("Never")
+            .positiveButtonTextColor(R.color.white)
+            .negativeButtonTextColor(R.color.grey_500)
+            .formTitle("Submit Feedback")
+            .formHint("Tell us where we can improve")
+            .formSubmitText("Submit")
+            .formCancelText("Cancel")
+            .ratingBarColor(R.color.accent)
+            .playstoreUrl("https://play.google.com/store/apps/details?id=battleroyale.challenges.com.secretstars")
+            .onThresholdCleared(new RatingDialog.Builder.RatingThresholdClearedListener() {
+                @Override
+                public void onThresholdCleared(RatingDialog ratingDialog, float rating, boolean thresholdCleared) {
+                    //do something
+                    ratingDialog.dismiss();
+                }
+            })
+            .onThresholdFailed(new RatingDialog.Builder.RatingThresholdFailedListener() {
+                @Override
+                public void onThresholdFailed(RatingDialog ratingDialog, float rating, boolean thresholdCleared) {
+                    //do something
+                    ratingDialog.dismiss();
+                }
+            })
+            .onRatingChanged(new RatingDialog.Builder.RatingDialogListener() {
+                @Override
+                public void onRatingSelected(float rating, boolean thresholdCleared) {
+                    Uri address = Uri.parse("https://play.google.com/store/apps/details?id=battleroyale.challenges.com.secretstars");
+                    Intent openlinkIntent = new Intent(Intent.ACTION_VIEW, address);
+                    startActivity(openlinkIntent);
+                }
+            })
+            .onRatingBarFormSumbit(new RatingDialog.Builder.RatingDialogFormListener() {
+                @Override
+                public void onFormSubmitted(String feedback) {
+
+                }
+            }).build();
+
+    ratingDialog.show();
+}
     @Override
     protected void onResume() {
         super.onResume();
