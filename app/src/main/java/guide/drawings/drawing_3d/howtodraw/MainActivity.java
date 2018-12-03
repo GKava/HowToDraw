@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity  {
 
         final RatingDialog ratingDialog = new RatingDialog.Builder(this)
                 .icon(ContextCompat.getDrawable(this, R.mipmap.ic_launcher))
-                .session(1)
+                .session(3)
                 .threshold(5)
                 .title("How was your experience with us?")
                 .titleTextColor(R.color.black)
