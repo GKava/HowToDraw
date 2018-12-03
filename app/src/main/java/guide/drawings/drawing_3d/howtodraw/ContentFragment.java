@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.Map;
+
 
 /**
  * A simple {@link Fragment} subclass.

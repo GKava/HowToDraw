@@ -1,6 +1,7 @@
 package guide.drawings.drawing_3d.howtodraw;
 
 
+import android.content.res.Configuration;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.LayoutInflater;
+import android.view.OrientationEventListener;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -32,7 +34,13 @@ public class MainFragmentMenu extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main_fragment_menu, container, false);
         recyclerView = view.findViewById(R.id.recycler);
-        verticalLinearLayoutManager = new GridLayoutManager(getActivity(),2);
+//        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            verticalLinearLayoutManager = new GridLayoutManager(getActivity(), 2);
+//        }
+//        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//            verticalLinearLayoutManager = new GridLayoutManager(getActivity(), 3);
+//        }
+
         verticalLinearLayoutManager.setStackFromEnd(false);
         recyclerView.setLayoutManager(verticalLinearLayoutManager);
         Display display = getActivity().getWindowManager().getDefaultDisplay();

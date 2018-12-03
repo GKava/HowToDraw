@@ -9,7 +9,8 @@
     android:background="@drawable/background_main">
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        ads:layout_constraintBottom_toTopOf="@+id/adView"
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
@@ -34,6 +35,18 @@
 
     </ScrollView>
 
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id"
+        ads:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView"
+        tools:layout_editor_absoluteX="0dp">
 
+    </com.google.android.gms.ads.AdView>
 
 </android.support.constraint.ConstraintLayout>
