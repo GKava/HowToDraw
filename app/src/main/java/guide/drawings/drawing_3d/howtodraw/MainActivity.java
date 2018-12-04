@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.codemybrainsout.ratingdialog.RatingDialog;
 import com.google.android.gms.ads.AdRequest;
@@ -39,60 +40,36 @@ public class MainActivity extends AppCompatActivity  {
             getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new MainFragmentMenu()).commit();
         }
 
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                rating ();
-//            }
-//        }, 3000);
+        // Просит поставить оценку после 2 запуска, спустя 20 сек
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                rating();
+            }
+        }, 20000);
 
     }
 
 
 public void rating (){
 
-    final RatingDialog ratingDialog = new RatingDialog.Builder(this)
-            .icon(ContextCompat.getDrawable(this, R.mipmap.ic_launcher))
-            .session(1)
+    final RatingDialog ratingDialog = new RatingDialog.Builder(MainActivity.this)
+            .session(2)
             .threshold(5)
-            .title("How was your experience with us?")
-            .titleTextColor(R.color.black)
-            .positiveButtonText("Not Now")
-            .negativeButtonText("Never")
-            .positiveButtonTextColor(R.color.white)
-            .negativeButtonTextColor(R.color.grey_500)
-            .formTitle("Submit Feedback")
-            .formHint("Tell us where we can improve")
-            .formSubmitText("Submit")
-            .formCancelText("Cancel")
-            .ratingBarColor(R.color.accent)
-            .playstoreUrl("https://play.google.com/store/apps/details?id=battleroyale.challenges.com.secretstars")
-            .onThresholdCleared(new RatingDialog.Builder.RatingThresholdClearedListener() {
-                @Override
-                public void onThresholdCleared(RatingDialog ratingDialog, float rating, boolean thresholdCleared) {
-                    //do something
-                    ratingDialog.dismiss();
-                }
-            })
-            .onThresholdFailed(new RatingDialog.Builder.RatingThresholdFailedListener() {
-                @Override
-                public void onThresholdFailed(RatingDialog ratingDialog, float rating, boolean thresholdCleared) {
-                    //do something
-                    ratingDialog.dismiss();
-                }
-            })
-            .onRatingChanged(new RatingDialog.Builder.RatingDialogListener() {
-                @Override
-                public void onRatingSelected(float rating, boolean thresholdCleared) {
-                    Uri address = Uri.parse("https://play.google.com/store/apps/details?id=battleroyale.challenges.com.secretstars");
-                    Intent openlinkIntent = new Intent(Intent.ACTION_VIEW, address);
-                    startActivity(openlinkIntent);
-                }
-            })
             .onRatingBarFormSumbit(new RatingDialog.Builder.RatingDialogFormListener() {
                 @Override
                 public void onFormSubmitted(String feedback) {
+                    String mailto = "mailto:pinrocketteam@gmail.com" +
+                            "?subject=" + Uri.encode("PixNite user feedback") +
+                            "&body=" + Uri.encode(feedback);
 
+                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                    emailIntent.setData(Uri.parse(mailto));
+                    try {
+                        startActivity(emailIntent);
+                    } catch (android.content.ActivityNotFoundException ex) {
+                        Toast.makeText(MainActivity.this, "Lol sho", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }).build();
 
