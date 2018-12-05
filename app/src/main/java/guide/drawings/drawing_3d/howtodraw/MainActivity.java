@@ -20,7 +20,6 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 public class MainActivity extends AppCompatActivity  {
-    public static FragmentManager fragmentManager;
     private AdView mAdView;
 
     @Override
@@ -32,7 +31,6 @@ public class MainActivity extends AppCompatActivity  {
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
-        fragmentManager = getSupportFragmentManager();
         if (findViewById(R.id.fragment_container)!=null){
             if (savedInstanceState!=null){
                 return;
@@ -50,31 +48,31 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
+    public void rating (){
 
-public void rating (){
+        final RatingDialog ratingDialog = new RatingDialog.Builder(MainActivity.this)
+                .session(2)
+                .threshold(5)
+                .onRatingBarFormSumbit(new RatingDialog.Builder.RatingDialogFormListener() {
+                    @Override
+                    public void onFormSubmitted(String feedback) {
+                        String mailto = "mailto:pinrocketteam@gmail.com" +
+                                "?subject=" + Uri.encode("PixNite user feedback") +
+                                "&body=" + Uri.encode(feedback);
 
-    final RatingDialog ratingDialog = new RatingDialog.Builder(MainActivity.this)
-            .session(2)
-            .threshold(5)
-            .onRatingBarFormSumbit(new RatingDialog.Builder.RatingDialogFormListener() {
-                @Override
-                public void onFormSubmitted(String feedback) {
-                    String mailto = "mailto:pinrocketteam@gmail.com" +
-                            "?subject=" + Uri.encode("PixNite user feedback") +
-                            "&body=" + Uri.encode(feedback);
-
-                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-                    emailIntent.setData(Uri.parse(mailto));
-                    try {
-                        startActivity(emailIntent);
-                    } catch (android.content.ActivityNotFoundException ex) {
-                        Toast.makeText(MainActivity.this, "Lol sho", Toast.LENGTH_SHORT).show();
+                        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                        emailIntent.setData(Uri.parse(mailto));
+                        try {
+                            startActivity(emailIntent);
+                        } catch (android.content.ActivityNotFoundException ex) {
+                            Toast.makeText(MainActivity.this, "Lol sho", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
-            }).build();
+                }).build();
 
-    ratingDialog.show();
-}
+        ratingDialog.show();
+    }
+
     @Override
     protected void onResume() {
         super.onResume();

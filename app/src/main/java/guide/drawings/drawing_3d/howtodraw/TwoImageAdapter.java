@@ -25,11 +25,19 @@ public class TwoImageAdapter extends RecyclerView.Adapter<TwoImageAdapter.ViewHo
     private ArrayList<Item> items = new ArrayList<Item>();
     private static final String TAG = "MY LOG ADAPTER ";
     private int width;
-    Context context;
+    private OnImageClickListener onImageClickListener;
+
+    public interface OnImageClickListener {
+        void onImageClick(int position);
+    }
 
     public TwoImageAdapter(int width) {
         super();
         this.width = width;
+    }
+
+    public void setListener(OnImageClickListener onImageClickListener) {
+        this.onImageClickListener = onImageClickListener;
     }
 
     @Override
@@ -47,26 +55,14 @@ public class TwoImageAdapter extends RecyclerView.Adapter<TwoImageAdapter.ViewHo
                 .thumbnail(0.5f)
                 .into(holder.imageName);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Fragment fr = new ContentFragment();
-                Bundle args = new Bundle();
-                args.putInt("bundle_int", pos);
-                fr.setArguments(args);
-                MainActivity.fragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, fr)
-                        .addToBackStack(null)
-                        .commit();
+        holder.itemView.setTag(pos);
 
-            }
-        });
-
+        //holder.itemView
     }
 
     @NonNull
     @Override
-    public TwoImageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public TwoImageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, final int viewType) {
         Log.d(TAG, "onCreateViewHolder");
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card_all_construction, parent, false);
 
@@ -74,22 +70,30 @@ public class TwoImageAdapter extends RecyclerView.Adapter<TwoImageAdapter.ViewHo
         lp.height = width;
         view.setLayoutParams(lp);
 
-        return new TwoImageAdapter.ViewHolder(view);
-    }
+        TwoImageAdapter.ViewHolder viewHolder = new TwoImageAdapter.ViewHolder(view);
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (onImageClickListener != null) {
+                    onImageClickListener.onImageClick((Integer) view.getTag());
+                }
+            }
+        });
 
+        return viewHolder;
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView imageName;
-
 
         public ViewHolder(View itemView) {
             super(itemView);
             imageName =(ImageView) itemView.findViewById(R.id.imageName);
         }
 
-        public void bind(Item allConstructionItem) {
-            Log.d(TAG, "bind");
-        }
+//        public void bind(Item allConstructionItem) {
+//            Log.d(TAG, "bind");
+//        }
     }
 
     public  void addMessage(Item item) {
