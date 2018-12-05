@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity  {
                     @Override
                     public void onFormSubmitted(String feedback) {
                         String mailto = "mailto:pinrocketteam@gmail.com" +
-                                "?subject=" + Uri.encode("PixNite user feedback") +
+                                "?subject=" + Uri.encode("How To Draw user feedback") +
                                 "&body=" + Uri.encode(feedback);
 
                         Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity  {
                         try {
                             startActivity(emailIntent);
                         } catch (android.content.ActivityNotFoundException ex) {
-                            Toast.makeText(MainActivity.this, "Lol sho", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, ":(", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }).build();
