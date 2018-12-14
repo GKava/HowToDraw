@@ -53,16 +53,16 @@ public class Content extends Fragment {
         adapter = new TwoImageAdapter(width,3);
         recyclerView.setAdapter(adapter);
         if (bundleInt==0) {
-            adapter.addMessage(new Item(R.drawable.im1,"Size: 7"));
+            adapter.addMessage(new Item(R.drawable.im1,""));
         }
         if (bundleInt==1) {
-            adapter.addMessage(new Item(R.drawable.im1,"Size: 7"));
-            adapter.addMessage(new Item(R.drawable.im3,"Size: 7"));
+            adapter.addMessage(new Item(R.drawable.im1,""));
+            adapter.addMessage(new Item(R.drawable.im3,""));
         }
         if (bundleInt==2) {
-            adapter.addMessage(new Item(R.drawable.im1,"Size: 7"));
-            adapter.addMessage(new Item(R.drawable.im3,"Size: 7"));
-            adapter.addMessage(new Item(R.drawable.im3,"Size: 7"));
+            adapter.addMessage(new Item(R.drawable.im1,""));
+            adapter.addMessage(new Item(R.drawable.im3,""));
+            adapter.addMessage(new Item(R.drawable.im3,""));
         }
 
         return view;

@@ -87,10 +87,10 @@ public class CreativeModeCategories extends Fragment implements TwoImageAdapter.
 
         adapter = new TwoImageAdapter(width, 1);
         recyclerView.setAdapter(adapter);
-        adapter.addMessage(new Item(R.drawable.im1,"Size: 7"));
-        adapter.addMessage(new Item(R.drawable.im2,"Size: 1"));
-        adapter.addMessage(new Item(R.drawable.im3,"Size: 44"));
-        adapter.addMessage(new Item(R.drawable.im1,"Size: 55"));
+        adapter.addMessage(new Item(R.drawable.im1,"Memes: 7"));
+        adapter.addMessage(new Item(R.drawable.im2,"Гонки: 1"));
+        adapter.addMessage(new Item(R.drawable.im3,"Lol what?!: 44"));
+        adapter.addMessage(new Item(R.drawable.im1,"Crazy: 55"));
         adapter.addMessage(new Item(R.drawable.im1,"Size: 5"));
         adapter.addMessage(new Item(R.drawable.im1,"Size: 353"));
         adapter.addMessage(new Item(R.drawable.im1,"Size: 1000"));

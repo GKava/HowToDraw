@@ -24,7 +24,7 @@ public class TwoImageAdapter extends RecyclerView.Adapter<TwoImageAdapter.ViewHo
     private ArrayList<Item> items = new ArrayList<Item>();
     private static final String TAG = "MY LOG ADAPTER ";
     private int width;
-    private int fragment_id;
+    public static int fragment_id;
     private OnImageClickListener onImageClickListener;
 
     public interface OnImageClickListener {
@@ -56,9 +56,10 @@ public class TwoImageAdapter extends RecyclerView.Adapter<TwoImageAdapter.ViewHo
                 .thumbnail(0.5f)
                 .into(holder.imageName);
 
+        holder.txt_card.setText(item.getTxt_card());
         holder.itemView.setTag(pos);
 
-        //holder.itemView
+
     }
 
     @NonNull
@@ -92,6 +93,12 @@ public class TwoImageAdapter extends RecyclerView.Adapter<TwoImageAdapter.ViewHo
             super(itemView);
             imageName =(ImageView) itemView.findViewById(R.id.imageName);
             txt_card = (TextView) itemView.findViewById(R.id.txt_card);
+
+            //Если это контект тест не ставим
+            if (fragment_id==3){
+                txt_card.setVisibility(View.INVISIBLE);
+
+            }
         }
 
 //        public void bind(Item allConstructionItem) {

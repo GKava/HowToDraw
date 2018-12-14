@@ -84,9 +84,9 @@ public class ChooseCategory extends Fragment implements TwoImageAdapter.OnImageC
 
         adapter = new TwoImageAdapter(width,2);
         recyclerView.setAdapter(adapter);
-        adapter.addMessage(new Item(R.drawable.im1,"Name content"));
-        adapter.addMessage(new Item(R.drawable.im2,"sanya ti sho ebobo?"));
-        adapter.addMessage(new Item(R.drawable.im3,"vot da"));
+        adapter.addMessage(new Item(R.drawable.im1,"Name content HARD"));
+        adapter.addMessage(new Item(R.drawable.im2,"LEGENDARY"));
+        adapter.addMessage(new Item(R.drawable.im3,"vot da EZ"));
 
         return view;
     }
