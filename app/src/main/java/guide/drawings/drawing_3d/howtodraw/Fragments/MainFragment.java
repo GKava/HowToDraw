@@ -36,8 +36,8 @@ ImageView creative_mode;
         display.getSize(size);
 
         int width = size.x;
-        double heingt_double =width*0.625;
-        int height_int = (int) heingt_double;
+        double height_double =width*0.625;
+        int height_int = (int) height_double;
 
         creative_mode.getLayoutParams().height = height_int;
                 creative_mode.requestLayout();

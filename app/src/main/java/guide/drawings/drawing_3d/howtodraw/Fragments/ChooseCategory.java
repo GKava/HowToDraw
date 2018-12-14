@@ -29,7 +29,7 @@ public class ChooseCategory extends Fragment implements TwoImageAdapter.OnImageC
     private LinearLayoutManager verticalLinearLayoutManager;
     private TwoImageAdapter adapter;
     private InterstitialAd mInterstitialAd;
-
+    int bundleInt;
 
     @Override
     public void onImageClick(int position) {
@@ -82,11 +82,24 @@ public class ChooseCategory extends Fragment implements TwoImageAdapter.OnImageC
         display.getSize(size);
         int width = size.x/2;
 
+
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            bundleInt = bundle.getInt("bundle_int");
+        }
+
         adapter = new TwoImageAdapter(width,2);
         recyclerView.setAdapter(adapter);
-        adapter.addMessage(new Item(R.drawable.im1,"Name content HARD"));
-        adapter.addMessage(new Item(R.drawable.im2,"LEGENDARY"));
-        adapter.addMessage(new Item(R.drawable.im3,"vot da EZ"));
+
+        if (bundleInt==0) {
+            adapter.addMessage(new Item(R.drawable.im1, "Name content HARD"));
+        }
+        if (bundleInt==1) {
+            adapter.addMessage(new Item(R.drawable.im2, "LEGENDARY"));
+        }
+        if (bundleInt==2) {
+            adapter.addMessage(new Item(R.drawable.im3, "vot da EZ"));
+        }
 
         return view;
     }

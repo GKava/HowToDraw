@@ -20,7 +20,7 @@ import guide.drawings.drawing_3d.howtodraw.R;
  * A simple {@link Fragment} subclass.
  */
 public class Content extends Fragment {
-    int bundleInt;
+    int git ;
     private RecyclerView recyclerView;
     private LinearLayoutManager verticalLinearLayoutManager;
     private TwoImageAdapter adapter;
@@ -56,7 +56,6 @@ public class Content extends Fragment {
             adapter.addMessage(new Item(R.drawable.im1,""));
         }
         if (bundleInt==1) {
-            adapter.addMessage(new Item(R.drawable.im1,""));
             adapter.addMessage(new Item(R.drawable.im3,""));
         }
         if (bundleInt==2) {
