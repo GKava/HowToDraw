@@ -1,18 +1,10 @@
 package guide.drawings.drawing_3d.howtodraw;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Handler;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.codemybrainsout.ratingdialog.RatingDialog;
@@ -35,7 +27,7 @@ public class MainActivity extends AppCompatActivity  {
             if (savedInstanceState!=null){
                 return;
             }
-            getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new MainFragmentMenu()).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new MainFragment()).commit();
         }
 
         // Просит поставить оценку после 2 запуска, спустя 20 сек
@@ -57,7 +49,7 @@ public class MainActivity extends AppCompatActivity  {
                     @Override
                     public void onFormSubmitted(String feedback) {
                         String mailto = "mailto:pinrocketteam@gmail.com" +
-                                "?subject=" + Uri.encode("How To Draw user feedback") +
+                                "?subject=" + Uri.encode("Creative Mode user feedback") +
                                 "&body=" + Uri.encode(feedback);
 
                         Intent emailIntent = new Intent(Intent.ACTION_SENDTO);

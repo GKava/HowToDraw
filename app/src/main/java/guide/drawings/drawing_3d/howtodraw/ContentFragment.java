@@ -51,14 +51,16 @@ public class ContentFragment extends Fragment {
 
 
 
-        adapter = new TwoImageAdapter(width);
+        adapter = new TwoImageAdapter(width,3);
         recyclerView.setAdapter(adapter);
         if (bundleInt==0) {
             adapter.addMessage(new Item(R.drawable.im1));
-            adapter.addMessage(new Item(R.drawable.im2));
-            adapter.addMessage(new Item(R.drawable.im3));
         }
         if (bundleInt==1) {
+            adapter.addMessage(new Item(R.drawable.im1));
+            adapter.addMessage(new Item(R.drawable.im3));
+        }
+        if (bundleInt==2) {
             adapter.addMessage(new Item(R.drawable.im1));
             adapter.addMessage(new Item(R.drawable.im3));
             adapter.addMessage(new Item(R.drawable.im3));

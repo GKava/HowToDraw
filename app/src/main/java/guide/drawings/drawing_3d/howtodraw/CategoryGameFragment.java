@@ -1,8 +1,6 @@
 package guide.drawings.drawing_3d.howtodraw;
 
 
-import android.content.Context;
-import android.content.res.Configuration;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,7 +9,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.LayoutInflater;
-import android.view.OrientationEventListener;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -23,15 +20,12 @@ import com.google.android.gms.ads.MobileAds;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragmentMenu extends Fragment implements TwoImageAdapter.OnImageClickListener {
+public class CategoryGameFragment extends Fragment implements TwoImageAdapter.OnImageClickListener {
     private RecyclerView recyclerView;
     private LinearLayoutManager verticalLinearLayoutManager;
     private TwoImageAdapter adapter;
     private InterstitialAd mInterstitialAd;
 
-    public MainFragmentMenu() {
-        // Required empty public constructor
-    }
 
     @Override
     public void onImageClick(int position) {
@@ -76,7 +70,7 @@ public class MainFragmentMenu extends Fragment implements TwoImageAdapter.OnImag
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
         recyclerView = view.findViewById(R.id.recycler);
-        verticalLinearLayoutManager = new GridLayoutManager(getActivity(), 2);
+        verticalLinearLayoutManager = new GridLayoutManager(getActivity(), 1);
         verticalLinearLayoutManager.setStackFromEnd(false);
         recyclerView.setLayoutManager(verticalLinearLayoutManager);
         Display display = getActivity().getWindowManager().getDefaultDisplay();
@@ -84,15 +78,12 @@ public class MainFragmentMenu extends Fragment implements TwoImageAdapter.OnImag
         display.getSize(size);
         int width = size.x/2;
 
-        adapter = new TwoImageAdapter(width);
+        adapter = new TwoImageAdapter(width,2);
         recyclerView.setAdapter(adapter);
         adapter.addMessage(new Item(R.drawable.im1));
         adapter.addMessage(new Item(R.drawable.im2));
         adapter.addMessage(new Item(R.drawable.im3));
-        adapter.addMessage(new Item(R.drawable.im1));
-        adapter.addMessage(new Item(R.drawable.im1));
-        adapter.addMessage(new Item(R.drawable.im1));
-        adapter.addMessage(new Item(R.drawable.im1));
+
         return view;
     }
 

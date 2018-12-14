@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainFragment">
+
+
+    <ImageView
+        android:id="@+id/creative_mode"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#D22"
+        android:src="@drawable/im2" />
+
+    <ImageView
+        android:background="#Ad2"
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@drawable/im2" />
+</LinearLayout>

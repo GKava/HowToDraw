@@ -25,15 +25,17 @@ public class TwoImageAdapter extends RecyclerView.Adapter<TwoImageAdapter.ViewHo
     private ArrayList<Item> items = new ArrayList<Item>();
     private static final String TAG = "MY LOG ADAPTER ";
     private int width;
+    private int fragment_id;
     private OnImageClickListener onImageClickListener;
 
     public interface OnImageClickListener {
         void onImageClick(int position);
     }
 
-    public TwoImageAdapter(int width) {
+    public TwoImageAdapter(int width, int fragment_id) {
         super();
         this.width = width;
+        this.fragment_id = fragment_id;
     }
 
     public void setListener(OnImageClickListener onImageClickListener) {
