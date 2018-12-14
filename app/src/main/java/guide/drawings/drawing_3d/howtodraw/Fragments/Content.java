@@ -20,7 +20,7 @@ import guide.drawings.drawing_3d.howtodraw.R;
  * A simple {@link Fragment} subclass.
  */
 public class Content extends Fragment {
-    int git ;
+    int bundleInt;
     private RecyclerView recyclerView;
     private LinearLayoutManager verticalLinearLayoutManager;
     private TwoImageAdapter adapter;
