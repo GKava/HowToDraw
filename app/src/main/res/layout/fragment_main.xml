@@ -5,20 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainFragment">
+    tools:context=".Fragments.MainFragment">
 
-
+<FrameLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
     <ImageView
+        android:alpha="0.7"
         android:id="@+id/creative_mode"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="#D22"
-        android:src="@drawable/im2" />
+        android:src="@drawable/creativebutton" />
 
-    <ImageView
-        android:background="#Ad2"
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:src="@drawable/im2" />
+   <TextView
+       android:layout_gravity="bottom"
+       android:gravity="center"
+       android:textColor="#FFF"
+       android:textSize="35sp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="CREATIVE MODE"
+       style="bold"/>
+</FrameLayout>
+
 </LinearLayout>

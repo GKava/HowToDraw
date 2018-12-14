@@ -11,6 +11,8 @@ import com.codemybrainsout.ratingdialog.RatingDialog;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import guide.drawings.drawing_3d.howtodraw.Fragments.MainFragment;
+
 public class MainActivity extends AppCompatActivity  {
     private AdView mAdView;
 

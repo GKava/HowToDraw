@@ -1,4 +1,4 @@
-package guide.drawings.drawing_3d.howtodraw;
+package guide.drawings.drawing_3d.howtodraw.Fragments;
 
 
 import android.graphics.Point;
@@ -10,22 +10,21 @@ import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.Map;
+import guide.drawings.drawing_3d.howtodraw.Atapters.TwoImageAdapter;
+import guide.drawings.drawing_3d.howtodraw.Item;
+import guide.drawings.drawing_3d.howtodraw.R;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ContentFragment extends Fragment {
+public class Content extends Fragment {
     int bundleInt;
     private RecyclerView recyclerView;
     private LinearLayoutManager verticalLinearLayoutManager;
     private TwoImageAdapter adapter;
-    public ContentFragment() {
+    public Content() {
         // Required empty public constructor
     }
 
@@ -54,16 +53,16 @@ public class ContentFragment extends Fragment {
         adapter = new TwoImageAdapter(width,3);
         recyclerView.setAdapter(adapter);
         if (bundleInt==0) {
-            adapter.addMessage(new Item(R.drawable.im1));
+            adapter.addMessage(new Item(R.drawable.im1,"Size: 7"));
         }
         if (bundleInt==1) {
-            adapter.addMessage(new Item(R.drawable.im1));
-            adapter.addMessage(new Item(R.drawable.im3));
+            adapter.addMessage(new Item(R.drawable.im1,"Size: 7"));
+            adapter.addMessage(new Item(R.drawable.im3,"Size: 7"));
         }
         if (bundleInt==2) {
-            adapter.addMessage(new Item(R.drawable.im1));
-            adapter.addMessage(new Item(R.drawable.im3));
-            adapter.addMessage(new Item(R.drawable.im3));
+            adapter.addMessage(new Item(R.drawable.im1,"Size: 7"));
+            adapter.addMessage(new Item(R.drawable.im3,"Size: 7"));
+            adapter.addMessage(new Item(R.drawable.im3,"Size: 7"));
         }
 
         return view;

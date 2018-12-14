@@ -1,8 +1,6 @@
-package guide.drawings.drawing_3d.howtodraw;
+package guide.drawings.drawing_3d.howtodraw.Fragments;
 
 
-import android.content.Context;
-import android.content.res.Configuration;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,7 +9,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.LayoutInflater;
-import android.view.OrientationEventListener;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -19,24 +16,25 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 
+import guide.drawings.drawing_3d.howtodraw.Atapters.TwoImageAdapter;
+import guide.drawings.drawing_3d.howtodraw.Item;
+import guide.drawings.drawing_3d.howtodraw.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragmentCreativeMenu extends Fragment implements TwoImageAdapter.OnImageClickListener {
+public class ChooseCategory extends Fragment implements TwoImageAdapter.OnImageClickListener {
     private RecyclerView recyclerView;
     private LinearLayoutManager verticalLinearLayoutManager;
     private TwoImageAdapter adapter;
     private InterstitialAd mInterstitialAd;
 
-    public MainFragmentCreativeMenu() {
-        // Required empty public constructor
-    }
 
     @Override
     public void onImageClick(int position) {
         viewAds();
-        Fragment fr = new CategoryGameFragment();
+        Fragment fr = new Content();
         Bundle args = new Bundle();
         args.putInt("bundle_int", position);
         fr.setArguments(args);
@@ -76,7 +74,7 @@ public class MainFragmentCreativeMenu extends Fragment implements TwoImageAdapte
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
         recyclerView = view.findViewById(R.id.recycler);
-        verticalLinearLayoutManager = new GridLayoutManager(getActivity(), 2);
+        verticalLinearLayoutManager = new GridLayoutManager(getActivity(), 1);
         verticalLinearLayoutManager.setStackFromEnd(false);
         recyclerView.setLayoutManager(verticalLinearLayoutManager);
         Display display = getActivity().getWindowManager().getDefaultDisplay();
@@ -84,15 +82,12 @@ public class MainFragmentCreativeMenu extends Fragment implements TwoImageAdapte
         display.getSize(size);
         int width = size.x/2;
 
-        adapter = new TwoImageAdapter(width, 1);
+        adapter = new TwoImageAdapter(width,2);
         recyclerView.setAdapter(adapter);
-        adapter.addMessage(new Item(R.drawable.im1));
-        adapter.addMessage(new Item(R.drawable.im2));
-        adapter.addMessage(new Item(R.drawable.im3));
-        adapter.addMessage(new Item(R.drawable.im1));
-        adapter.addMessage(new Item(R.drawable.im1));
-        adapter.addMessage(new Item(R.drawable.im1));
-        adapter.addMessage(new Item(R.drawable.im1));
+        adapter.addMessage(new Item(R.drawable.im1,"Name content"));
+        adapter.addMessage(new Item(R.drawable.im2,"sanya ti sho ebobo?"));
+        adapter.addMessage(new Item(R.drawable.im3,"vot da"));
+
         return view;
     }
 

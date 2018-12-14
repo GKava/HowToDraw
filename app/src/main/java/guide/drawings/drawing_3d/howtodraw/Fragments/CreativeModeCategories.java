@@ -1,4 +1,4 @@
-package guide.drawings.drawing_3d.howtodraw;
+package guide.drawings.drawing_3d.howtodraw.Fragments;
 
 
 import android.graphics.Point;
@@ -16,21 +16,28 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 
+import guide.drawings.drawing_3d.howtodraw.Atapters.TwoImageAdapter;
+import guide.drawings.drawing_3d.howtodraw.Item;
+import guide.drawings.drawing_3d.howtodraw.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CategoryGameFragment extends Fragment implements TwoImageAdapter.OnImageClickListener {
+public class CreativeModeCategories extends Fragment implements TwoImageAdapter.OnImageClickListener {
     private RecyclerView recyclerView;
     private LinearLayoutManager verticalLinearLayoutManager;
     private TwoImageAdapter adapter;
     private InterstitialAd mInterstitialAd;
 
+    public CreativeModeCategories() {
+        // Required empty public constructor
+    }
 
     @Override
     public void onImageClick(int position) {
         viewAds();
-        Fragment fr = new ContentFragment();
+        Fragment fr = new ChooseCategory();
         Bundle args = new Bundle();
         args.putInt("bundle_int", position);
         fr.setArguments(args);
@@ -70,7 +77,7 @@ public class CategoryGameFragment extends Fragment implements TwoImageAdapter.On
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
         recyclerView = view.findViewById(R.id.recycler);
-        verticalLinearLayoutManager = new GridLayoutManager(getActivity(), 1);
+        verticalLinearLayoutManager = new GridLayoutManager(getActivity(), 2);
         verticalLinearLayoutManager.setStackFromEnd(false);
         recyclerView.setLayoutManager(verticalLinearLayoutManager);
         Display display = getActivity().getWindowManager().getDefaultDisplay();
@@ -78,12 +85,15 @@ public class CategoryGameFragment extends Fragment implements TwoImageAdapter.On
         display.getSize(size);
         int width = size.x/2;
 
-        adapter = new TwoImageAdapter(width,2);
+        adapter = new TwoImageAdapter(width, 1);
         recyclerView.setAdapter(adapter);
-        adapter.addMessage(new Item(R.drawable.im1));
-        adapter.addMessage(new Item(R.drawable.im2));
-        adapter.addMessage(new Item(R.drawable.im3));
-
+        adapter.addMessage(new Item(R.drawable.im1,"Size: 7"));
+        adapter.addMessage(new Item(R.drawable.im2,"Size: 1"));
+        adapter.addMessage(new Item(R.drawable.im3,"Size: 44"));
+        adapter.addMessage(new Item(R.drawable.im1,"Size: 55"));
+        adapter.addMessage(new Item(R.drawable.im1,"Size: 5"));
+        adapter.addMessage(new Item(R.drawable.im1,"Size: 353"));
+        adapter.addMessage(new Item(R.drawable.im1,"Size: 1000"));
         return view;
     }
 

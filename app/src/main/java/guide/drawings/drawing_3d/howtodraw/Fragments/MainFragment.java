@@ -1,4 +1,4 @@
-package guide.drawings.drawing_3d.howtodraw;
+package guide.drawings.drawing_3d.howtodraw.Fragments;
 
 
 import android.graphics.Point;
@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import guide.drawings.drawing_3d.howtodraw.R;
 
 
 /**
@@ -32,6 +34,14 @@ ImageView creative_mode;
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
+
+        int width = size.x;
+        double heingt_double =width*0.625;
+        int height_int = (int) heingt_double;
+
+        creative_mode.getLayoutParams().height = height_int;
+                creative_mode.requestLayout();
+
         return view;
     }
 
@@ -39,7 +49,7 @@ ImageView creative_mode;
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.creative_mode:
-                Fragment fr = new MainFragmentCreativeMenu();
+                Fragment fr = new CreativeModeCategories();
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, fr)
                         .addToBackStack(null)

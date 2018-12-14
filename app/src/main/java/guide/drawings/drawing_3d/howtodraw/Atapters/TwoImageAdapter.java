@@ -1,23 +1,22 @@
-package guide.drawings.drawing_3d.howtodraw;
+package guide.drawings.drawing_3d.howtodraw.Atapters;
 
 
-import android.content.Context;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import guide.drawings.drawing_3d.howtodraw.Item;
+import guide.drawings.drawing_3d.howtodraw.R;
 
 
 public class TwoImageAdapter extends RecyclerView.Adapter<TwoImageAdapter.ViewHolder>  {
@@ -87,10 +86,12 @@ public class TwoImageAdapter extends RecyclerView.Adapter<TwoImageAdapter.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView imageName;
+        private TextView txt_card;
 
         public ViewHolder(View itemView) {
             super(itemView);
             imageName =(ImageView) itemView.findViewById(R.id.imageName);
+            txt_card = (TextView) itemView.findViewById(R.id.txt_card);
         }
 
 //        public void bind(Item allConstructionItem) {
